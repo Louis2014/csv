@@ -1,6 +1,7 @@
 package com.github.houbb.csv.bs;
 
 import com.github.houbb.csv.api.ICsv;
+import com.github.houbb.csv.constant.CsvConst;
 import com.github.houbb.csv.support.context.DefaultWriteContext;
 import com.github.houbb.csv.support.csv.DefaultCsv;
 import com.github.houbb.csv.support.writer.ICsvWriter;
@@ -58,6 +59,8 @@ public final class CsvWriteBs {
      * @since 0.0.8
      */
     private ICsv csv = Instances.singleton(DefaultCsv.class);
+
+    private String split= CsvConst.COMMA;
 
     /**
      * 私有化构造器
@@ -119,6 +122,11 @@ public final class CsvWriteBs {
         return this;
     }
 
+    public CsvWriteBs split(String sp) {
+        this.split = sp;
+        return this;
+    }
+
     /**
      * 设置写入实现类
      * @param writer 写入类
@@ -146,8 +154,7 @@ public final class CsvWriteBs {
                 .writeBom(writeBom)
                 .sort(sort)
                 .escape(escape)
-                .writer(writer)
-                ;
+                .writer(writer).split(split);
 
         return csv.write(context);
     }

@@ -15,6 +15,7 @@ public final class CsvConst {
      */
     public static final String COMMA = ",";
 
+
     /**
      * 数组分隔符 or
      */

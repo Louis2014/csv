@@ -27,6 +27,7 @@ public class DefaultReadContext<T> implements IReadContext<T> {
     private int endIndex;
 
     private boolean escape;
+    private String split;
 
     public DefaultReadContext<T> newInstance() {
         return new DefaultReadContext<>();
@@ -85,6 +86,15 @@ public class DefaultReadContext<T> implements IReadContext<T> {
     @Override
     public boolean escape() {
         return escape;
+    }
+
+    @Override
+    public String split() {
+        return this.split;
+    }
+    public DefaultReadContext<T> split(String sp) {
+        this.split = sp;
+        return this;
     }
 
     public DefaultReadContext<T> escape(boolean escape) {

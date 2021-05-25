@@ -1,7 +1,12 @@
 package com.github.houbb.csv.bs;
 
-import com.github.houbb.csv.model.*;
-import com.github.houbb.csv.support.reader.impl.CsvReaderFilePath;
+import com.github.houbb.csv.model.TestAnnotation;
+import com.github.houbb.csv.model.User;
+import com.github.houbb.csv.model.UserAnnotation;
+import com.github.houbb.csv.model.UserCollection;
+import com.github.houbb.csv.model.UserEntry;
+import com.github.houbb.csv.model.UserEscape;
+import com.github.houbb.csv.model.UserSelfRef;
 import com.github.houbb.csv.support.reader.impl.CsvReaders;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -38,6 +43,16 @@ public class CsvReadBsTest {
                 .reader(CsvReaders.filePath(path))
                 .read(UserAnnotation.class);
         Assert.assertEquals("你好", userList.get(0).name());
+    }
+
+    @Test
+    public void annotationTest2() {
+        final String path = "src/test/resources/spt_dailyreport_to_GS_2021_05_24.CSV";
+        List<TestAnnotation> userList = CsvReadBs.newInstance()
+                .reader(CsvReaders.filePath(path))
+                .split("\\^")
+                .read(TestAnnotation.class);
+        Assert.assertEquals("2624", userList.get(0).getSpId());
     }
 
     /**

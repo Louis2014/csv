@@ -51,5 +51,6 @@ public interface IWriteContext<T> {
      * @since 0.1.16
      */
     boolean escape();
+    String split();
 
 }

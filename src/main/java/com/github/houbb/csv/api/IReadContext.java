@@ -50,4 +50,6 @@ public interface IReadContext<T> {
      */
     boolean escape();
 
+    String split();
+
 }

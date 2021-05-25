@@ -49,6 +49,7 @@ public class DefaultWriteContext<T> implements IWriteContext<T> {
      * @since 0.0.6
      */
     private boolean escape;
+    private String split;
 
     @Override
     public ICsvWriter writer() {
@@ -103,6 +104,16 @@ public class DefaultWriteContext<T> implements IWriteContext<T> {
     @Override
     public boolean escape() {
         return escape;
+    }
+
+    @Override
+    public String split() {
+       return split;
+    }
+
+    public DefaultWriteContext<T> split(String sp) {
+        this.split = sp;
+        return this;
     }
 
     public DefaultWriteContext<T> escape(boolean escape) {

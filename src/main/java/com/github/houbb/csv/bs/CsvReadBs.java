@@ -42,6 +42,8 @@ public final class CsvReadBs {
      */
     private boolean escape = false;
 
+    private String split=CsvConst.COMMA;
+
     /**
      * 无任何排序实现
      * @since 0.0.8
@@ -116,6 +118,11 @@ public final class CsvReadBs {
         return this;
     }
 
+    public CsvReadBs split(String sp) {
+        this.split = sp;
+        return this;
+    }
+
     /**
      * 将指定文件的内容读取到列表中
      * @param tClass 类型
@@ -130,7 +137,7 @@ public final class CsvReadBs {
                 .endIndex(endIndex)
                 .sort(sort)
                 .readClass(tClass)
-                .escape(escape)
+                .escape(escape).split(split)
                 ;
 
         return csv.read(context);
