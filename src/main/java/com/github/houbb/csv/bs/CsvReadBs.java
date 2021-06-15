@@ -135,10 +135,8 @@ public final class CsvReadBs {
         context.reader(reader)
                 .startIndex(startIndex)
                 .endIndex(endIndex)
-                .sort(sort)
                 .readClass(tClass)
-                .escape(escape).split(split)
-                ;
+                .escape(escape).split(split);
 
         return csv.read(context);
     }
